@@ -19,7 +19,6 @@ body, ul, li, p {
     list-style: none;
     font-family: 'Fira Code', monospace;
     box-sizing: border-box;
-    font-size: 1.2rem;
 }
 
 a {
@@ -30,8 +29,6 @@ a {
 body {
     background-color: var(--fundo-editor);
 }
-
-
 
 /* --------------------------------------------------------------------------------------------- */
 
@@ -49,16 +46,18 @@ body {
 
 .menu li {margin-left: 10px;}
 
-.menu li a {
-    display: block;
-    padding: 10px;
-}
+.menu li a {display: block;padding: 10px;}
 
 /*********************** FIM CABECALHO *************************/
 
 /* --------------------------------------------------------------------------------------------- */
 
 /*************************** SESSÃO 1 - TELA INICIAL *************************/
+
+.minFonte {
+    /* pega o menor valor entre os dois */
+    font-size: min(2.5em, 7.5vw);
+}
 
 .sessao-1 {
     height: 100vh;
@@ -71,74 +70,30 @@ body {
 
 .imagem-tela {
     height: 100%;
-    margin: auto;
     overflow: hidden;
 }
 .img-back-tela {
     height: 100%;
-    margin: auto;
-    opacity: 0.2;
+    opacity: 0.05;
     position: relative;
     z-index: 1;
     background-size: auto;
 }
 
 .digitando {
-    background-color: rgba(34, 34, 34, 0.7);
-    width: 600px;
-    height: 300px;
+    width: min(500px, 90vw);
+    height: 170px;
     position: absolute;
-    padding: 50px;
-    border-radius: 0.5em;;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     z-index: 2;
 }
 
-.digitando::before{
-    content: '';
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-right: none;
-    border-bottom: none;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 0.5em;
-}
+.digitando .nome {color: var(--texto-cod-verde);}
 
-.digitando::after{
-    content: '';
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-left: none;
-    border-top: none;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 0.5em;
-}
+.digitando .caracter-cod {color: var(--texto-cod-laranja);}
 
-.digitando span {font-size: 2em;}
-
-.digitando .nome {
-    color: var(--texto-cod-verde);
-    font-size: 2.5em;
-}
-
-.digitando .caracter-cod {
-    color: var(--texto-cod-laranja);
-}
-
-.digitando .return {
-    color: var(--texto-cod-amarelo);
-}
+.digitando .return {color: var(--texto-cod-amarelo);}
 
 .linha1, .linha2, .linha3 {
     border-right: 5px solid transparent;
@@ -148,188 +103,43 @@ body {
 
 .linha1 {
     animation: 
-        cursor-linha1 900ms infinite normal, 
-        digitando-linha1 3s steps(14) 1s normal both
-    ;
+        cursor-linha 800ms infinite normal, 
+        digitando-linha1 3s steps(15) 1s normal both;
 }
-
 .linha2 {
     animation: 
-        cursor-linha2 900ms infinite 4s normal,
-        border-left-line-2 200ms 4s normal both,
-        digitando-linha2 3s steps(18) 4s normal both
-    ;
+        cursor-linha 800ms infinite 4s normal,
+        border-left-line-2 300ms 4s normal both,
+        digitando-linha2 3s steps(18) 4s normal both;
 }
-
 .linha3 {
     animation: 
-        cursor-linha3 900ms infinite 7s normal, 
-        digitando-linha3 1s steps(1) 7s normal both, 
-        cursor-linha3 900ms infinite 8s normal
-    ;
+        cursor-linha 800ms infinite 7s normal, 
+        digitando-linha3 0.2s steps(1) 7.5s normal both, 
+        cursor-linha 800ms infinite 7s normal;
 }
 
-/*------ ANIMAÇÃO LINHA - 1 ------*/
-@keyframes digitando-linha1 {
-    from {width: 0;}
-    to {width: 21.3em; border-right-color: transparent;}
-}
-@keyframes cursor-linha1 {
+@keyframes cursor-linha {
     from {border-right-color: var(--font-gray)}
     to {border-right-color: transparent;}
-} /*------ FIM ANIMAÇÃO LINHA - 1 ------*/
+}
 
-/*------ ANIMAÇÃO LINHA - 2 ------*/
+@keyframes digitando-linha1 {
+    from {width: 0;}
+    to {width: min(21.8em, 75vw); border-right-color: transparent;}
+}
 @keyframes digitando-linha2 {
     from {width: 0;}
-    to {width: 24em; border-right-color: transparent;}
+    to {width: min(480px, 89.5vw); border-right-color: transparent;}
+}
+@keyframes digitando-linha3 {
+    from {width: 0;}
+    to {width: min(1.6em, 4vw); border-right-color: transparent;}
 }
 @keyframes border-left-line-2{
     from{border-left: 1px solid transparent;}
     to{border-left: 1px solid var(--font-gray);}
 }
-@keyframes cursor-linha2 {
-    from {border-right-color: var(--font-gray)}
-    to {border-right-color: transparent;}
-} /*------ FIM ANIMAÇÃO LINHA - 2 ------*/
-
-/*------ ANIMAÇÃO LINHA - 3 ------*/
-@keyframes digitando-linha3 {
-    from {width: 0;}
-    to {width: 1.5em; border-right-color: transparent;}
-}
-@keyframes cursor-linha3 {
-    from {border-right-color: var(--font-gray)}
-    to {border-right-color: transparent;}
-} /*------ FIM ANIMAÇÃO LINHA - 3 ------*/
-
-/* ----------------------------------- */
-
-/* ********************** MEDIA QUERIES ********************* */
-
-/*--------------- @MEDIA MAX-650px  ---------------*/
-@media (min-width: 601px) and (max-width: 650px){
-
-    .digitando {
-        width: 90%;
-        height: 300px;
-        padding-left: 3em;
-        padding-top: 4em;
-        border-radius: 0.4em;
-    }
-
-    .img-back-tela {background-size: auto;}
-
-    .digitando span {font-size: 1.6em;}
-
-    /*------ @MEDIA MAX-650px ANIMAÇÃO  ------*/
-    @keyframes digitando-linha1 {
-        from {width: 0;}
-        to {width: 14.5em; border-right-color: transparent;}
-    }
-
-    @keyframes digitando-linha2 {
-        from {width: 0;}
-        to {width: 20em; border-right-color: transparent;}
-    }
-
-    @keyframes digitando-linha3 {
-        from {width: 0;}
-        to {width: 0.9em; border-right-color: transparent;}
-    }
-    /*------ FIM @MEDIA MAX-650px ANIMAÇÃO  ------*/
-}
-/*----------- FIM @MEDIA MAX-650px  ---------------*/
-/* ----------------------------------------------- */
-/*--------------- @MEDIA MAX-600px  ---------------*/
-@media (max-width: 600px){
-
-    .digitando {
-        width: 90%;
-        height: 250px;
-        padding-left: 3em;
-        padding-top: 3.5em;
-    }
-
-    .digitando span {font-size: 1.3em;}
-
-    .digitando .nome {font-size: 1.3em;}
-
-    /*------ @MEDIA MAX-600px ANIMAÇÃO  ------*/
-    @keyframes digitando-linha1 {
-        from {width: 0;}
-        to {width: 12em; border-right-color: transparent;}
-    }
-
-    @keyframes digitando-linha2 {
-        from {width: 0;}
-        to {width: 16em; border-right-color: transparent;}
-    }
-
-    @keyframes digitando-linha3 {
-        from {width: 0;}
-        to {width: 0.7em; border-right-color: transparent;}
-    }
-    /*------ FIM @MEDIA MAX-600px ANIMAÇÃO -------*/
-}
-/*----------- FIM @MEDIA MAX-600px ----------------*/
-/* ----------------------------------------------- */
-/*--------------- @MEDIA MAX-450px  ---------------*/
-@media (min-width: 381px) and (max-width: 450px){
-
-    .digitando {
-        padding-left: 2em;
-        padding-top: 3.5em;
-    }
-
-    /*------ @MEDIA MAX-450px ANIMAÇÃO  ------*/
-    @keyframes digitando-linha1 {
-        from {width: 0;}
-        to {width: 12em; border-right-color: transparent;}
-    }
-
-    @keyframes digitando-linha2 {
-        from {width: 0;}
-        to {width: 15.7em; border-right-color: transparent;}
-    }
-
-    /*------ FIM @MEDIA MAX-450px ANIMAÇÃO -------*/
-}
-/*------------ FIM @MEDIA MAX-450px ----------------*/
-/* ----------------------------------------------- */
-/*--------------- @MEDIA MAX-380px ----------------*/
-@media (max-width: 380px){
-
-    .digitando {
-        width: 90%;
-        height: 200px;
-        padding-left: 2em;
-        padding-top: 2.5em;
-    }
-
-    .digitando span {font-size: 1.1em;}
-
-    .digitando .nome {font-size: 1.1em;}
-
-    /*------ @MEDIA MAX-380px ANIMAÇÃO  ------*/
-    @keyframes digitando-linha1 {
-        from {width: 0;}
-        to {width: 10em; border-right-color: transparent;}
-    }
-
-    @keyframes digitando-linha2 {
-        from {width: 0;}
-        to {width: 13em; border-right-color: transparent;}
-    }
-
-    @keyframes digitando-linha3 {
-        from {width: 0;}
-        to {width: 0.7em; border-right-color: transparent;}
-    }
-    /*------ FIM @MEDIA MAX-380px ANIMAÇÃO -------*/
-}
-/*------------ FIM @MEDIA MAX-380px ----------------*/
-
 /*************************** FIM SESSÃO 1 - TELA INICIAL *************************/
 
 /* --------------------------------------------------------------------------------------------- */
@@ -377,15 +187,16 @@ body {
     width: 200px;
     height: 250px;
     flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
     border-radius: 5px 0 0 5px;
-    
     overflow: hidden;
 }
 
 .img-projeto img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .card-projet p {
@@ -399,19 +210,12 @@ body {
     color: var(--font-black);
     margin: 1.5em 0;
     font-weight: bold;
-    box-shadow: 0.05em 0.1em  0.2em #4e4e4e;
+    box-shadow: 0.02em 0.05em  0.2em #949494;
 }
 
 .btn:hover {
-    box-shadow: 0.05em 0.1em  0.4em #4e4e4e;
+    box-shadow: 0.02em 0.05em  0.5em #949494;
 }
-
-/* ------------ MEDIA -------------- */
-@media (max-width: 400px){
-
-    .btn {font-size: 0.9em;}
-}
-
 
 /*********************** FIM SESSÃO 2 - ÁREA PORTIFOLIO *************************/
 
@@ -433,8 +237,6 @@ footer {
     white-space: nowrap;
     display: flex;
     justify-content: flex-start;
-
-    
 }
 
 .autor {
@@ -445,13 +247,10 @@ footer {
     animation: 
         cursor-footer 700ms infinite normal, 
         digitando-footer 3s steps(23) 1s normal both,
-        cursor-footer 700ms infinite normal
-    ;
-
-    
+        cursor-footer 700ms infinite normal;  
 }
 
-/*------ ANIMAÇÃO LINHA - 1 ------*/
+/*------ ANIMAÇÃO RODAPE ------*/
 @keyframes digitando-footer {
     from {width: 0;}
     to {width: 14em; border-right-color: transparent;}
@@ -459,7 +258,7 @@ footer {
 @keyframes cursor-footer {
     from {border-right-color: #00be29}
     to {border-right-color: transparent;}
-} /*------ FIM ANIMAÇÃO LINHA - 1 ------*/
+} /*------ FIM ANIMAÇÃO RODAPE ------*/
 
 /*********************** FIM FOOTER *************************/
 /* --------------------------------------------------------------------------------------------- */
