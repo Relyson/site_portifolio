@@ -222,8 +222,6 @@ body {
 
     .digitando span {font-size: 1.6em;}
 
-    /* .digitando .nome {font-size: 1.6em;} */
-
     /*------ @MEDIA MAX-650px ANIMAÇÃO  ------*/
     @keyframes digitando-linha1 {
         from {width: 0;}
@@ -363,8 +361,6 @@ body {
 
     display: flex;
     flex-wrap: nowrap;
-    /* justify-content: space-between;
-    align-items: stretch; */
 }
 
 .texto-e-tbn {
@@ -381,11 +377,9 @@ body {
     width: 200px;
     height: 250px;
     flex: 1;
-    background-color: #00be29;
     border-radius: 5px 0 0 5px;
     
     overflow: hidden;
-    /* background-size: cover; */
 }
 
 .img-projeto img {
@@ -395,15 +389,11 @@ body {
 }
 
 .card-projet p {
-    /* text-align: justify; */
-    /* border: 1px solid red; */
     margin-left: 1em;
     text-align: center;
-    /* padding-left: 1em; */
 }
 
 .btn {
-    /* border: 2px solid #00be29; */
     border-radius: 30px;
     padding: 0.5em 1em;
     color: var(--font-black);
@@ -438,7 +428,6 @@ footer {
 }
 
 .container-footer {
-    /* border: 1px solid red; */
     width: 14.5em;
     overflow: hidden;
     white-space: nowrap;
