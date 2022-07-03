@@ -242,12 +242,14 @@ footer {
 .autor {
     color: #00be29;
     border-right: 5px solid;
-    overflow: hidden;
+    overflow: hidden;  
+}
 
+.animaRodape {
     animation: 
         cursor-footer 700ms infinite normal, 
         digitando-footer 3s steps(23) 1s normal both,
-        cursor-footer 700ms infinite normal;  
+        cursor-footer 700ms infinite normal;
 }
 
 /*------ ANIMAÇÃO RODAPE ------*/
