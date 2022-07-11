@@ -4,5 +4,3 @@ function footerAnimate() {
 
     rodapeH < window.innerHeight ? elementoRodape.className = 'autor animaRodape' : elementoRodape.className = 'autor';
 }
-
-
